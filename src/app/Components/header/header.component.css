@@ -1,0 +1,49 @@
+.cart-no {
+    position: absolute;
+    min-height: 25px;
+    min-width: 25px;
+    border-radius: 50%;
+    background: blue;
+    color: white;
+    text-align: center;
+    top: -12px;
+    right: 32px;
+}
+
+a {
+    text-decoration: none;
+    color: #343a40;
+
+    &.active {
+        color: orange
+    }
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    z-index: 1000;
+}
+
+/* Main content container */
+.container.main-content {
+    padding-top: 80px; /* Adjust this to match header height */
+    margin: 0 auto;
+}
+
+/* Responsive adjustments for the header */
+@media (max-width: 768px) {
+    header h3 {
+        font-size: 1.5rem;
+    }
+    nav a {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
