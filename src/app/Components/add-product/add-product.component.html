@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <form [formGroup]="addProductForm " (submit)="submit()" >
+          <!-- Name Field -->
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" formControlName="Name" class="form-control" placeholder="Name Of Product">
+            @if (addProductForm.get('Name')?.invalid && (addProductForm.get('Name')?.dirty || addProductForm.get('Name')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('Name')?.errors?.['required']) {
+                  <div>Name is required.</div>
+                }
+                @if (addProductForm.get('Name')?.errors?.['minlength']) {
+                  <div>Name must be at least {{ addProductForm.get('Name')?.errors?.['minlength'].requiredLength }} characters long.</div>
+                }
+                @if (addProductForm.get('Name')?.errors?.['maxlength']) {
+                  <div>Name cannot exceed {{ addProductForm.get('Name')?.errors?.['maxlength'].requiredLength }} characters.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- Model Field -->
+          <div class="mb-3">
+            <label class="form-label">Model</label>
+            <input type="text" formControlName="Model" class="form-control" placeholder="Name Of Model">
+            @if (addProductForm.get('Model')?.invalid && (addProductForm.get('Model')?.dirty || addProductForm.get('Model')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('Model')?.errors?.['required']) {
+                  <div>Model is required.</div>
+                }
+                @if (addProductForm.get('Model')?.errors?.['minlength']) {
+                  <div>Model must be at least {{ addProductForm.get('Model')?.errors?.['minlength'].requiredLength }} characters long.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- Description Field -->
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" formControlName="Description" class="form-control" placeholder="Name Of Description">
+            @if (addProductForm.get('Description')?.invalid && (addProductForm.get('Description')?.dirty || addProductForm.get('Description')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('Description')?.errors?.['required']) {
+                  <div>Description is required.</div>
+                }
+                @if (addProductForm.get('Description')?.errors?.['minlength']) {
+                  <div>Description must be at least {{ addProductForm.get('Description')?.errors?.['minlength'].requiredLength }} characters long.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- Price Field -->
+          <div class="mb-3">
+            <label class="form-label">Price*</label>
+            <input type="number" formControlName="Price" class="form-control" placeholder="Price">
+            @if (addProductForm.get('Price')?.invalid && (addProductForm.get('Price')?.dirty || addProductForm.get('Price')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('Price')?.errors?.['required']) {
+                  <div>Price is required.</div>
+                }
+                @if (addProductForm.get('Price')?.errors?.['min']) {
+                  <div>Price must be at least {{ addProductForm.get('Price')?.errors?.['min'].min }}.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- Discount Field -->
+          <div class="mb-3">
+            <label class="form-label">Discount</label>
+            <input type="number" formControlName="Discount" class="form-control" placeholder="Discount">
+            @if (addProductForm.get('Discount')?.invalid && (addProductForm.get('Discount')?.dirty || addProductForm.get('Discount')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('Discount')?.errors?.['required']) {
+                  <div>Discount is required.</div>
+                }
+                @if (addProductForm.get('Discount')?.errors?.['min']) {
+                  <div>Discount must be at least {{ addProductForm.get('Discount')?.errors?.['min'].min }}.</div>
+                }
+                @if (addProductForm.get('Discount')?.errors?.['max']) {
+                  <div>Discount cannot exceed {{ addProductForm.get('Discount')?.errors?.['max'].max }}.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- Category Field -->
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" formControlName="CategoryId" aria-label="Default select example">
+                <option *ngFor="let c of categories" [value]="c.Id">{{ c.Name }}</option>
+            </select>
+            @if (addProductForm.get('CategoryId')?.invalid && (addProductForm.get('CategoryId')?.dirty || addProductForm.get('CategoryId')?.touched)) {
+              <div class="text-danger">
+                @if (addProductForm.get('CategoryId')?.errors?.['required']) {
+                  <div>Category is required.</div>
+                }
+              </div>
+            }
+          </div>
+  
+          <!-- File Input Field -->
+          <div class="mb-3">
+          <label for="formFile" class="form-label">Default file input example</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            (change)="onFileChange($event)"
+          />
+        </div>
+  
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" [disabled]="addProductForm.invalid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>

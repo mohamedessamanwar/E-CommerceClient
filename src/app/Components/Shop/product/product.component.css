@@ -1,36 +1,143 @@
-.btn {
-    width: 30%;
-    height: 40px;
+/* General styling */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
 }
 
-.image :hover {
-    opacity: 1;
-    & button {
-        transform: none;
-        opacity: 1;
-    }
+.card:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
 }
 
+.card-body {
+  padding: 20px;
+}
+
+/* Image styling */
+.image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Rounded corners for the image */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect on the image */
+.image:hover img {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Overlay styling */
 .hover-overlay {
-    position: absolute;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.image:hover .hover-overlay {
+  opacity: 1; /* Show the overlay when image is hovered */
+}
+
+.hover-overlay button {
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: scale(0.9);
+}
+
+.image:hover .hover-overlay button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hover-overlay button:first-of-type {
+  transform: translateX(-20px);
+}
+
+.hover-overlay button:last-of-type {
+  transform: translateX(20px);
+}
+
+/* Hover effect on button in overlay */
+.image:hover .hover-overlay button:first-of-type {
+  transform: translateX(0);
+}
+
+.image:hover .hover-overlay button:last-of-type {
+  transform: translateX(0);
+}
+
+/* Styling for the card text */
+.text-muted {
+  color: #6c757d;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+/* Button styling */
+.btn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+  background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:disabled {
+  background-color: #d6d6d6;
+  border-color: #d6d6d6;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 15px;
+  }
+
+  .btn {
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(255,255,255,0.5);
-    opacity: 0;
-    transition: all 0.5s;
+  }
 
-    & button {
-        z-index: 1000;
-        transition: all 0.5s;
-    }
+  .image img {
+    border-radius: 5px;
+  }
+}
 
-    & button:first-of-type {
-        transform: translateX(-20px);
-    }
+@media (max-width: 576px) {
+  .card {
+    margin-bottom: 20px;
+  }
 
-    & button:last-of-type {
-        transform: translateX(20px);
-    }
+  .card-body {
+    padding: 10px;
+  }
 }

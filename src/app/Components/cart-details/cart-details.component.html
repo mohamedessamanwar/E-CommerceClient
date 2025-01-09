@@ -1,0 +1,91 @@
+<div class="table-responsive">
+    <table class="table align-middle text-center">
+        <thead class="text-uppercase bg-light">
+            <tr>
+                <th>
+                    <div class="py-2">Product</div>
+                </th>
+                <th>
+                    <div class="py-2">Price</div>
+                </th>
+                <th class="text-center">
+                    <div class="py-2">Quantity</div>
+                </th>
+                <th>
+                    <div class="py-2">Total</div>
+                </th>
+                <th>
+                    <div class="py-2">Remove</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of productsCart; track item.productId) {
+            <tr>
+                <!-- Product Column -->
+                <th>
+                    <div class="d-flex align-items-center">
+                        <img [src]="item.urls?.[0]" 
+                             alt="Product Image" 
+                             class="img-fluid rounded"
+                             style="max-height: 60px; width: 60px;">
+                        <div class="ms-3 text-start">
+                            <h6 class="mb-1">
+                                <a [href]="'/shop/' + item.productId" class="text-dark text-decoration-none">
+                                    {{ item.name }}
+                                </a>
+                            </h6>
+                            <small class="text-muted fst-italic">
+                                {{ item.model }}
+                            </small>
+                        </div>
+                    </div>
+                </th>
+
+                <!-- Price Column -->
+                <td><strong>${{ item.currentPrice }}</strong></td>
+
+                <!-- Quantity Column with Increase & Decrease Buttons -->
+                <td>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <!-- Decrease Button -->
+                        <button
+                            (click)="Decrease(item.shoppingCartId)"
+                            class="btn btn-danger btn-sm"
+                            aria-label="Decrease Quantity"
+                        >
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+
+                        <!-- Item Count Display -->
+                        <strong class="mx-3">{{ item.itemCount }}</strong>
+
+                        <!-- Increase Button -->
+                        <button
+                            (click)="Increase(item.shoppingCartId)"
+                            class="btn btn-success btn-sm"
+                            aria-label="Increase Quantity"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </td>
+
+                <!-- Total Price Column -->
+                <td><strong>${{ item.currentPrice * item.itemCount }}</strong></td>
+
+                <!-- Remove Button -->
+                <td>
+                    <button 
+                        (click)="Remove(item.shoppingCartId)" 
+                        class="btn btn-outline-danger btn-sm"
+                        aria-label="Remove Item"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

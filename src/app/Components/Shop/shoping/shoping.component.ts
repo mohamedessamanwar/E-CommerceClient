@@ -125,20 +125,5 @@ GetProductsByOrderBy(arg0: number) {
         this.getProducts($event, this.OrderBy, this.FeesId, this.CategoryId, this.Search) ;
       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

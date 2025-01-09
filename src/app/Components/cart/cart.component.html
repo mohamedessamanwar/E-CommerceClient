@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    @if(productsCart.length == 0){
+        <h1>No products in cart</h1>
+    }
+    @else {
+        <div class="container">
+            <div class="row">
+                <!-- Basket summary section -->
+                <div class="basket-summary">
+                   <app-cart-details (eventRem)="Remove($event)"    (eventDec)="Decrease($event)" (eventInc)="Increase($event)"    [productsCart]="productsCart"></app-cart-details>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <!-- Order totals section -->
+                    <div class="order-totals"></div>
+                    <div class="d-grid">
+                        <a href="/checkout" class="btn btn-outline-primary py-2">
+                            Proceed to checkout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    }
+</div>

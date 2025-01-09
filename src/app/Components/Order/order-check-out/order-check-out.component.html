@@ -1,0 +1,159 @@
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+    integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+<div class="row" >
+
+<div class="col-lg-8">
+<div class="card">
+    <div class="card-body">
+        <ol class="activity-checkout mb-0 px-4 mt-3">
+            <li class="checkout-item">
+                <div class="avatar checkout-icon p-1">
+                    <div class="avatar-title rounded-circle bg-primary">
+                        <i class="bx bxs-receipt text-white font-size-20"></i>
+                    </div>
+                </div>
+                <div class="avatar checkout-icon p-1">
+                    <div class="avatar-title rounded-circle bg-primary">
+                        <i class="bx bxs-truck text-white font-size-20"></i>
+                    </div>
+                </div>
+                <div class="feed-item-list">
+                    <div>
+                        <h5 class="font-size-16 mb-1">Shipping Info</h5>
+                        <div class="mb-3">
+                            <div class="row">
+                                @if(!AddressErrorMessage){
+                                    <p>No Address Found</p>
+                                }
+                                @else {
+                                    @for (item of Address ; track item.id) {
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div data-bs-toggle="collapse">
+                                                <label class="card-radio-label mb-0">
+                                                    <input (click)="ChangeAddress(item.id)" type="radio"
+                                                        name="address" id="info-address1" class="card-radio-input" checked="">
+                                                    <div class="card-radio text-truncate p-3">
+                                                        <span class="fs-14 mb-4 d-block">{{ item.city || 'Unknown City' }}</span>
+                                                        <span class="text-dark">{{ item.description || 'No Description' }}</span>
+                                                        
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+
+            <li class="checkout-item">
+                <div class="avatar checkout-icon p-1">
+                    <div class="avatar-title rounded-circle bg-primary">
+                        <i class="bx bxs-wallet-alt text-white font-size-20"></i>
+                    </div>
+                </div>
+                <div class="feed-item-list">
+                    <div>
+                        <h5 class="font-size-16 mb-1">Payment Info</h5>                     
+                    </div>
+                    <div>
+                        <h5 class="font-size-14 mb-3">Payment method :</h5>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6">
+                                <div data-bs-toggle="collapse">
+                                    <label class="card-radio-label">
+                                        <input (click)="ViewForm()" (click)="ShowPayment()" type="radio"
+                                            name="pay-method" id="pay-methodoption1" class="card-radio-input">
+                                        <span class="card-radio py-3 text-center text-truncate">
+                                            <i class="bx bx-credit-card d-block h2 mb-3"></i>
+                                            Credit / Debit Card
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div>
+                                    <label class="card-radio-label">
+                                        <input (click)="ViewForm()" type="radio" name="pay-method"
+                                            id="pay-methodoption3" class="card-radio-input" checked="">
+                                        <span class="card-radio py-3 text-center text-truncate">
+                                            <i class="bx bx-money d-block h2 mb-3"></i>
+                                            <span>Cash on Delivery</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            @if(isCreditCard){
+                <div class="feed-item-list">
+                    <div>
+                        <h5 class="font-size-16 mb-1">Card Information</h5>
+                        <p class="text-muted text-truncate mb-4">Please provide your credit or debit card details to proceed.</p>
+                        <div class="mb-3">
+                            <form (ngSubmit)="SubmitPayment()">
+                                <div id="card-element">
+                                    <!-- Stripe Element will be inserted here -->
+                                </div>
+                                <button class="btn btn-success mt-5" type="button" (click)="SubmitPayment()">Check Card</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            
+            <div class="row my-4">
+                <div class="col">
+                    <a routerLink="/" class="btn btn-link text-muted">
+                        <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping 
+                    </a>
+                </div>
+                <div class="col">
+                    @if(!isCreditCard){
+                        <div class="text-end mt-2 mt-sm-0">
+                            <a (click)="AddOrder()" class="btn btn-success">
+                                <i class="mdi mdi-cart-outline me-1"></i> Proceed 
+                            </a>
+                        </div>
+                       }
+                   @if(isCreditCard && Token){
+                    <div class="text-end mt-2 mt-sm-0">
+                        <a (click)="AddOrder()" class="btn btn-success">
+                            <i class="mdi mdi-cart-outline me-1"></i> Proceed 
+                        </a>
+                    </div>
+                   }
+                </div>
+            </div>        
+        </ol>
+
+    </div>
+    
+
+    
+</div>
+</div> 
+
+
+
+<div class="col-lg-4">
+   <app-order-details [CartProduct]="CartsProducts"  ></app-order-details>
+</div>
+
+
+
+</div>
+            

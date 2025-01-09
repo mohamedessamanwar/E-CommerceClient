@@ -7,7 +7,7 @@ import { ShopingComponent } from "./Components/Shop/shoping/shoping.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ShopingComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ShopingComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
