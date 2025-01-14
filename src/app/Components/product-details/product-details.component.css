@@ -1,0 +1,53 @@
+.product-Details{
+    background-color: rgb(246, 244, 244);
+    padding: 20px;
+}
+.product-Details-Info{
+   text-transform: uppercase;
+}
+.product-Details-Info small{
+    font-weight: bold;
+    color: #ff9f1a;
+}
+
+.product-Details .discount small{
+    font-weight: bold;
+}
+.mm{
+    padding: 0;
+}
+
+.add-to-cart {
+    background: #ff9f1a;
+    padding: 15px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+.form-selectt{
+  margin: 5px;
+  border: none;
+  background-color: rgb(255, 254, 253);
+}
+.Rating{
+    border: solid 1px #ff9f1a;
+    
+}
+
+.Rating-stars{
+    border: solid 1px #ff9f1a;
+
+}
+.person{
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    background-color: #ff9f1a;
+    color: white;
+    padding: 5px;
+}
+.stars{
+    color: #ff9f1a;
+}

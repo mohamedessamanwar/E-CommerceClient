@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12 product-Details  ">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                <img class="img-product"
+                    [src]="product.images?.[0]"
+                    alt="Product Image" class="img-fluid rounded">
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                <h2 class="product-title"> {{ product.name }}</h2>
+                <p class="product-Details mm">{{ product.description }}</p>
+                <h4 class="product-Details-Info price">{{ product.currentPrice }}<small>100$</small></h4>
+                <h4 class="product-Details-Info">Category:{{ product.categoryName }}</h4>
+
+                <p class="discount"><small>{{ product.discount }}</small> of product! </p>
+                <div class="row">
+                    <button class="add-to-cart col-lg-4 col-md-12 col-sm-12">Add to cart</button>
+                    <select class="col-lg-3 col-md-12 col-sm-12  form-selectt">
+                        <option *ngFor="let i of [].constructor(product.count); let index = index" [value]="index + 1">{{ index + 1 }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h1>Product Rating</h1>
+    <div class="row Rating ">
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center Rating-stars">
+            <h1 class="text-rating">4.8</h1>
+            <div class="mb-3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p>Based on 245 reviews</p>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12">        
+            <div class="rating-bar mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span>5 stars</span>
+                    <small class="text-muted">{{c}} Rate</small>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="c" [attr.aria-valuenow]="c"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="rating-bar mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span>4 stars</span>
+                    <small class="text-muted">{{c}} Rate</small>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="c" [attr.aria-valuenow]="c"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="rating-bar mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span>5 stars</span>
+                    <small class="text-muted">{{c}} Rate</small>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="c" [attr.aria-valuenow]="c"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+<div>
+    <h1>Product Reviews</h1>
+    <div class="row justify-content-center align-items-center" >
+        <div class="col-lg-1 col-md-2 col-sm-2">
+            <i  class="fa-solid fa-user person"></i>
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-8">
+            <div class="d-flex align-items-center"  style="width: 100px;">             
+                <h3 class="me-3">name</h3>
+                <i class="fa-solid fa-star stars"></i>
+                <i class="fa-solid fa-star stars"></i>
+                <i class="fa-solid fa-star stars"></i>
+                <i class="fa-solid fa-star stars"></i>
+                <i class="fa-regular fa-star-half-stroke stars "></i>
+            </div>       
+            <p class="text-muted">The process was smooth, after providing the required info,
+                 Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!</p>
+            
+        </div>
+       
+    </div>
+</div>
+

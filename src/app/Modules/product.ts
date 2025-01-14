@@ -32,3 +32,18 @@ export interface IAddProduct {
     Cover?: File ; 
 }
 
+
+
+ export interface IProductDetails {
+    id: number;
+    name: string;
+    model: string;
+    price: number;
+    currentPrice: number;
+    discount: number;
+    description: string;
+    categoryName: string;
+    categoryID: number;
+    images: string[];
+    count: number;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { loadStripe, StripeElementsOptions, Stripe, StripeCardElement, PaymentIntent, StripeElements } from '@stripe/stripe-js';
+import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderService } from '../../../Services/ordersService/order.service';
 import { Router } from '@angular/router';

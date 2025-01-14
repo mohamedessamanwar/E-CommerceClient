@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAddProduct, IProduct, IProductView } from '../Modules/product';
+import { IAddProduct, IProductView ,IProductDetails} from '../Modules/product';
 import { Observable } from 'rxjs';
 import { Response } from '../Modules/response';
 import { ProductWithPagination } from '../Modules/ProductWithPagination';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +33,6 @@ export class ProductService {
     formData.append('price', product.price.toString()); // Convert number to string
     formData.append('discount', product.Discount.toString()); // Convert number to string
     formData.append('categoryId', product.categoryId.toString()); // Convert number to string
-
     if (product.Cover ) {
         formData.append('Cover', product.Cover, product.Cover.name);
       
@@ -42,4 +40,8 @@ export class ProductService {
     // Send the FormData as a POST request
     return this.http.post<Response<IProductView>>('https://localhost:7138/api/v1.0/Product', formData);
 }
-}
+
+
+getProductDetails(id:number):Observable<Response<IProductDetails>>{
+   return this.http.get<Response<IProductDetails>>('https://localhost:7138/api/v1/product/Productdetails/'+id);
+}}
