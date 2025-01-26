@@ -51,3 +51,27 @@
 .stars{
     color: #ff9f1a;
 }
+
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: gray; /* Default star color */
+    margin-right: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .star:hover {
+    color: gold; /* Highlight on hover */
+  }
+  
+  .active {
+    color: gold; /* Active star color */
+  }
+  
+  .btn-review{
+    width: 150px;
+    margin-top: 10px;
+  }
+.faa-star{
+    color: gold; /* Active star color */
+}

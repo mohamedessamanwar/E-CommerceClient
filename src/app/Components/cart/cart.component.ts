@@ -4,6 +4,7 @@ import { IProductShoppingCartView } from '../../Modules/Cart';
 
 import Swal from 'sweetalert2';
 import { CartService } from '../../Services/CartService/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,12 +17,25 @@ export class CartComponent implements OnInit {
 
 
   productsCart:IProductShoppingCartView[]=[];
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService , private router: Router) { }
   ngOnInit(): void {
     this.cartService.getCarts().subscribe({
       next: (res) => {
-        this.productsCart = res.data?.productShoppingCartViews ?? [];
-    }}
+        if(res.data == null){
+          this.productsCart = [];
+        }
+        else{
+          this.productsCart = res.data.productShoppingCartViews ; 
+        }
+       
+    }  , 
+    error: (err) => {
+      if( err.status == 401 || err.status == 403){
+         this.router.navigate(['/login']);
+      }
+    }
+  
+  }
     );
   }
 
@@ -70,7 +84,7 @@ export class CartComponent implements OnInit {
           this.cartService.getCarts().subscribe({
             next: (res) => {
               this.productsCart = res.data?.productShoppingCartViews ?? [];
-
+               
           }}
           );
         } , 

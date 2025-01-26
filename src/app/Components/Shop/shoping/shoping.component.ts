@@ -18,7 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class ShopingComponent  implements OnInit {
 
-   col:IProduct[] = [] ;
+  col:IProduct[] = [] ;
   Categories: ICategory[] = [];
   Fees : IFees[] = [];
   OrderByList: IOderBy[] = [] ;
@@ -32,9 +32,6 @@ export class ShopingComponent  implements OnInit {
   TotalCount: number = 0;
   products: IProduct[] = [];
   Error: boolean = false;
-
-  
-
 
   constructor(private productService: ProductService) {
     this.Categories = [
@@ -71,15 +68,13 @@ export class ShopingComponent  implements OnInit {
         this.Error=false;
         this.products = res.data?.products ?? [];
         this.TotalCount = res.data?.count ?? 0;   
-        console.log(res);  // res data .
-        console.log(this.products);
+   
 
       },
       error: (err) => {
         // Log the full error message if available
       const errorMessage = err?.error?.Message || 'An unknown error occurred';
-      console.error('Error fetching products:', errorMessage)
-      console.error(err.error); // res Data . 
+       
       this.Error = true;
       },
       complete: () => {
